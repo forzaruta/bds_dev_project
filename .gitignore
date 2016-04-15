@@ -1,0 +1,42 @@
+c1.bin
+c2.bin
+c3.bin
+c4.bin
+c5.bin
+c6.bin
+c7.bin
+c8.bin
+c9.bin
+c10.bin
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Code::Blocks
+*.depend
+*.layout
+
+# Executables
+*.exe
+*.out
