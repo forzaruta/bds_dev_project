@@ -6,7 +6,6 @@ typedef long dtype;
 #include <stdio.h>
 #include <fstream>
 #include <iomanip>
-//#include <stdlib.h>
 #include <vector>
 #include <ctype.h>
 #include <iostream>
@@ -26,7 +25,7 @@ struct node {
    node *p[M];   // Pointers to other nodes (n+1 in use)
 };
 
-#define M 5  // Order of B-tree: M link fields in each node
+//#define M 5  // Order of B-tree: M link fields in each node
 
 class LsmLevelMemory {
 public:
@@ -44,7 +43,7 @@ public:
     void DelNode(dtype x);
     void ShowSearch(dtype x)const;
     bool search_value(dtype x)const;
-    std::vector<long> getNValues(const node *r, int c0TotalNodes, bool copyAllFromC0)const;
+    std::vector<long> getNValues(const node *r, int c0TotalNodes, int c0TotalValues, bool copyAllFromC0)const;
     std::vector<long> memoryLevelCopy(LsmLevelMemory *c0, bool copyAllFromC0);
     int getValuesCount();
 private:

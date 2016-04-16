@@ -89,7 +89,7 @@ int counter = 0;
 
 std::vector<long> arr;
 
-std::vector<long> LsmLevelMemory::getNValues(const node *r, int c0TotalNodes, bool copyAllFromC0)const
+std::vector<long> LsmLevelMemory::getNValues(const node *r, int c0TotalNodes, int c0TotalValues, bool copyAllFromC0)const
 {
 
     /* ********************************************** DEBUG ******************************************************
@@ -105,9 +105,11 @@ std::vector<long> LsmLevelMemory::getNValues(const node *r, int c0TotalNodes, bo
 
     if (copyAllFromC0)
     {
-        counter_limit = c0TotalNodes;
+
+        counter_limit = c0TotalValues;
 
     } else {
+
 
         counter_limit = (int) c0TotalNodes / 2;
     }
@@ -117,7 +119,7 @@ std::vector<long> LsmLevelMemory::getNValues(const node *r, int c0TotalNodes, bo
         int i;
         int j;
 
-        int pointer_position = 0;
+        //int pointer_position = 0;
 
              for (i=0; i < r->n; i++)
               {
@@ -125,6 +127,7 @@ std::vector<long> LsmLevelMemory::getNValues(const node *r, int c0TotalNodes, bo
                     {
 
                         arr.push_back(r->k[i]);
+                        counter += 1;
 
                         /* ********************************************** DEBUG ******************************************************
                         *************************************************************************************************************/
@@ -133,15 +136,15 @@ std::vector<long> LsmLevelMemory::getNValues(const node *r, int c0TotalNodes, bo
                     }
               }
 
-              counter += 1;
+//              counter += 1;
 
-            if (counter < counter_limit)
-            {
+            //if (counter < counter_limit)
+            //{
                 for (j=0; j <= r->n; j++)
                 {
-                    getNValues(r->p[j],c0TotalNodes, copyAllFromC0);
+                    getNValues(r->p[j],c0TotalNodes, c0TotalValues, copyAllFromC0);
                 }
-            }
+            //}
     }
 
     /* ********************************************** DEBUG ******************************************************
@@ -170,8 +173,9 @@ std::vector<long> LsmLevelMemory::memoryLevelCopy(LsmLevelMemory *c0, bool copyA
     //************************************************************************************************************
 
     int c0TotalNodes = (*c0).getNodesCount();
+    int c0TotalValues = (*c0).getValuesCount();
 
-    return getNValues(root, c0TotalNodes, copyAllFromC0);
+    return getNValues(root, c0TotalNodes, c0TotalValues, copyAllFromC0);
 }
 
 int LsmLevelMemory::total_nodes_count = 0;

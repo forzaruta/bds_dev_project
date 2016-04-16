@@ -235,21 +235,21 @@ void LsmTree::insert_value( dtype value )
 
 
     //cout << "FIRST LEVEL MAX " << LsmTree::firstLevelFileSize << endl;
-    cout << "percentage number is " << LsmTree::c0_percentage_of_c1 << endl;
+    //cout << "percentage number is " << LsmTree::c0_percentage_of_c1 << endl;
 
     int c0_max_size = (int) (LsmTree::firstLevelFileSize * LsmTree::c0_percentage_of_c1) / 50;
     //get c0 size by finding the count of nodes/////////////////////
-    cout << "C0 Size " << c0_max_size << endl;
-    cout << "firstLevelFileSize is " << LsmTree::firstLevelFileSize;
+    //cout << "C0 Size " << c0_max_size << endl;
+    //cout << "firstLevelFileSize is " << LsmTree::firstLevelFileSize;
 
-    //c0.print();
-    cout << "c0 has this many values " << c0.getValuesCount() << endl;
+
+    //cout << "c0 has this many values " << c0.getValuesCount() << endl;
 
     // is c0 full?
     // NO
-//    if (c0.getNodesCount() < 10)
+    if (c0.getNodesCount() < 3)
 //    {
-      if (c0.getValuesCount() < c0_max_size)
+      //if (c0.getValuesCount() < c0_max_size)
       {
 
 
@@ -270,7 +270,7 @@ void LsmTree::insert_value( dtype value )
 
          /* ********************************************** DEBUG ******************************************************
         *************************************************************************************************************/
-        cout << "C0 is FULL - ROLLING MERGE" << endl;
+        //cout << "C0 is FULL - ROLLING MERGE" << endl;
         //************************************************************************************************************
 
         // true - copy entire c0 to c1 on rollingMerge
@@ -1152,6 +1152,7 @@ int LsmTree::parseLine(char* line){
 
     const size_t count = arr.size();
 
+
     //cout << sizeof(vector<long>) + (sizeof(int) * arr.size()) << endl;
 
     int levelCounter = 0;
@@ -1631,7 +1632,7 @@ int LsmTree::parseLine(char* line){
     /* ********************************************** DEBUG ******************************************************
     *************************************************************************************************************/
     //cout << "c0 before delete" << endl;
-    //cout << "NODES COUNT FOR c0 " << c0.getNodesCount() << endl;
+    //cout << "VALUES COUNT FOR c0 " << c0.getValuesCount() << endl;
     //************************************************************************************************************
     //c0.print();
 
@@ -1648,8 +1649,8 @@ int LsmTree::parseLine(char* line){
 
     /* ********************************************** DEBUG ******************************************************
     *************************************************************************************************************/
-//    cout << "C0 AFTER DELETE" << endl;
-//    c0.print();
+    //cout << "C0 AFTER DELETE" << endl;
+    //c0.print();
     //************************************************************************************************************
 
 

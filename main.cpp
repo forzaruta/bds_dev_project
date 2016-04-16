@@ -1,7 +1,7 @@
 // Copyright(c) 1996 Leendert Ammeraal. All rights reserved.
 // This program text occurs in Chapter 7 of
 //
-//    Ammeraal, L. (1996) Algorithms and Data Structures in C++,
+//   nethergod (1996) Algorithms and Data Structures in C++,
 //       Chichester: John Wiley.
 
 /* disktree:
@@ -47,11 +47,11 @@ int main()
     // 2        = merge strategy, defaults to 2
 
     //LsmTree lsm_tree(10, 10485760, 2, true);
-    LsmTree lsm_tree(5, 600, 2, true, 1.8, 2);
+    LsmTree lsm_tree(5, 10485760, 2, true, .8, 2);
 
 
 //    dtype x1 = 0;
-//    while (x1 < 150)
+//    while (x1 < 3000)
 //    {
 //        //cout << "INSERTING TO LSM TREE VALUE " << x1 << endl;
 //        lsm_tree.insert_value(x1);
@@ -59,7 +59,7 @@ int main()
 //    }
 
     srand ( time(NULL) );
-    for (int t=0;t<1000;t++)
+    for (int t=0;t<10000;t++)
     {
         long random_x;
         random_x = rand() % 1000000;
@@ -67,7 +67,7 @@ int main()
     }
 
 
-    lsm_tree.printStats();
+    //lsm_tree.printStats();
 
     // test insert read delete
     //lsm_tree.insert_value(1636);
